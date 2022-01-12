@@ -3,8 +3,8 @@ import { Card, Typography } from 'antd';
 
 import './Dashboard.less';
 
-import Nickel from './Dashboard/nickel';
 import Usd from './Dashboard/usd';
+import Trend from './Dashboard/trend';
 
 const { Title } = Typography;
 
@@ -12,8 +12,8 @@ const Dashboard = () => {
   return (
     <PageContainer>
       <Card>
-        <Title>Nickel chart</Title>
-        <Nickel />
+        <Title>Tred chart</Title>
+        <Trend />
       </Card>
       <Card>
         <Title>Usd chart</Title>

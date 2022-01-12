@@ -1,15 +1,14 @@
 import { useEffect, useState } from 'react';
-import { Line } from '@ant-design/charts';
+import { Area } from '@ant-design/plots';
 
 const Usd = () => {
   const [data, setData] = useState([]);
 
   const asyncFetch = () => {
-    fetch('http://127.0.0.1:8000/Productsview/')
+    fetch('http://127.0.0.1:8000/Dollarprice/')
       .then((response) => response.json())
       .then((json) => {
-        console.log(json.results);
-        setData(json);
+        setData(json.results);
       })
       .catch((error) => {
         console.log('fetch data failed', error);
@@ -22,16 +21,20 @@ const Usd = () => {
 
   const config = {
     data,
-    height: 400,
-    xField: 'createdon',
-    yField: 'close',
-    point: {
-      size: 5,
-      shape: 'diamond',
+    xField: 'shamsidate',
+    yField: 'closed',
+    xAxis: {
+      range: [0, 1],
+      tickCount: 5,
+    },
+    areaStyle: () => {
+      return {
+        fill: 'l(270) 0:#ffffff 0.5:#7ec2f3 1:#1890ff',
+      };
     },
   };
 
-  return <Line {...config} />;
+  return <Area {...config} />;
 };
 
 export default Usd;
